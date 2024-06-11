@@ -1,0 +1,11 @@
+org/openmrs/module/amrscore/AmrscoreActivator.class
+org/openmrs/module/amrscore/Item.class
+org/openmrs/module/amrscore/api/db/AfyastatDatabaseConnector.class
+org/openmrs/module/amrscore/api/utils/FormsManager.class
+org/openmrs/module/amrscore/api/impl/AmrscoreServiceImpl.class
+org/openmrs/module/amrscore/api/AmrscoreService.class
+org/openmrs/module/amrscore/api/db/DatabaseConnector.class
+org/openmrs/module/amrscore/AmrscoreConfig.class
+org/openmrs/module/amrscore/api/dao/AmrscoreDao.class
+org/openmrs/module/amrscore/api/utils/ReportRequest.class
+org/openmrs/module/amrscore/api/utils/ZScoreUtil.class

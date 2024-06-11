@@ -1,0 +1,11 @@
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/db/AfyastatDatabaseConnector.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/db/DatabaseConnector.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/utils/ZScoreUtil.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/AmrscoreService.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/AmrscoreActivator.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/utils/ReportRequest.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/dao/AmrscoreDao.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/utils/FormsManager.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/AmrscoreConfig.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/Item.java
+/Users/directorict/Documents/OpenMRS3.X/backend/openmrs-module-amrscore/api/src/main/java/org/openmrs/module/amrscore/api/impl/AmrscoreServiceImpl.java

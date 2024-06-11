@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  	
+  <modelVersion>4.0.0</modelVersion>
+      
+  <parent>
+            
+    <groupId>org.openmrs.maven.parents</groupId>
+            
+    <artifactId>maven-parent-openmrs-module</artifactId>
+            
+    <version>1.1.1</version>
+        
+  </parent>
+  	
+  <groupId>org.openmrs.module</groupId>
+  	
+  <artifactId>amrscore</artifactId>
+  	
+  <version>1.0.0</version>
+  	
+  <packaging>pom</packaging>
+  	
+  <name>AMRS Core</name>
+  	
+  <description>AMRS APIs</description>
+  	
+  <url>https://wiki.openmrs.org/x/FQ4z</url>
+  	
+  <properties>
+    		
+    <openmrsPlatformVersion>1.11.6</openmrsPlatformVersion>
+    		
+    <java.version>1.8</java.version>
+    		
+    <webservicesRestVersion>2.26.0</webservicesRestVersion>
+    		
+    <legacyUIomodVersion>1.8.2</legacyUIomodVersion>
+    		
+    <jsonVersion>20231013</jsonVersion>
+    	
+  </properties>
+  	
+  <scm>
+    		
+    <connection>scm:git:git@github.com:openmrs/openmrs-module-amrscore.git</connection>
+    		
+    <developerConnection>scm:git:git@github.com:openmrs/openmrs-module-amrscore.git</developerConnection>
+    		
+    <url>https://github.com/openmrs/openmrs-module-amrscore/</url>
+    	
+  </scm>
+  	
+  <modules>
+    		
+    <module>api</module>
+    		
+    <module>omod</module>
+
+      
+  </modules>
+  	
+  <dependencyManagement>
+    		
+    <dependencies>
+      			
+      <dependency>
+        				
+        <groupId>org.openmrs.distro</groupId>
+        				
+        <artifactId>referenceapplication</artifactId>
+        				
+        <version>2.4</version>
+        				
+        <type>pom</type>
+        				
+        <scope>import</scope>
+        			
+      </dependency>
+      			
+      <dependency>
+        				
+        <groupId>org.openmrs.module</groupId>
+        				
+        <artifactId>legacyui-omod</artifactId>
+        				
+        <version>${legacyUIomodVersion}</version>
+        			
+      </dependency>
+      			
+      <dependency>
+        				
+        <groupId>org.openmrs.module</groupId>
+        				
+        <artifactId>webservices.rest-omod</artifactId>
+        				
+        <version>${webservicesRestVersion}</version>
+        				
+        <type>jar</type>
+        				
+        <scope>provided</scope>
+        			
+      </dependency>
+      			
+      <dependency>
+        				
+        <groupId>org.openmrs.module</groupId>
+        				
+        <artifactId>webservices.rest-omod-common</artifactId>
+        				
+        <version>${webservicesRestVersion}</version>
+        				
+        <scope>provided</scope>
+        			
+      </dependency>
+      			
+      <dependency>
+        				
+        <groupId>org.openmrs.module</groupId>
+        				
+        <artifactId>webservices.rest-omod-1.9</artifactId>
+        				
+        <version>${webservicesRestVersion}</version>
+        				
+        <scope>provided</scope>
+        			
+      </dependency>
+      			
+      <dependency>
+        				
+        <groupId>org.openmrs.module</groupId>
+        				
+        <artifactId>webservices.rest-omod-common</artifactId>
+        				
+        <version>${webservicesRestVersion}</version>
+        				
+        <classifier>tests</classifier>
+        				
+        <scope>test</scope>
+        			
+      </dependency>
+      			
+      <dependency>
+        				
+        <groupId>org.json</groupId>
+        				
+        <artifactId>json</artifactId>
+        				
+        <version>${jsonVersion}</version>
+        			
+      </dependency>
+      		
+    </dependencies>
+    	
+  </dependencyManagement>
+  	
+  <repositories>
+    		
+    <repository>
+      			
+      <id>openmrs-repo</id>
+      			
+      <name>OpenMRS Nexus Repository</name>
+      			
+      <url>https://mavenrepo.openmrs.org/public</url>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>central</id>
+      			
+      <name>Maven Repository Switchboard</name>
+      			
+      <layout>default</layout>
+      			
+      <url>https://repo1.maven.org/maven2</url>
+      		
+    </repository>
+    	
+  </repositories>
+  	
+  <pluginRepositories>
+    		
+    <pluginRepository>
+      			
+      <id>openmrs-repo</id>
+      			
+      <name>OpenMRS Nexus Repository</name>
+      			
+      <url>https://mavenrepo.openmrs.org/public</url>
+      			
+      <snapshots>
+        				
+        <enabled>false</enabled>
+        			
+      </snapshots>
+      		
+    </pluginRepository>
+    	
+  </pluginRepositories>
+  
+</project>
