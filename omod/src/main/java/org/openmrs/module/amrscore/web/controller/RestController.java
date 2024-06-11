@@ -210,7 +210,7 @@ public class RestController extends BaseRestController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/locations")
 	@ResponseBody
-	public Object getAllLocationFromParent() {
+	public Object getAllLocationFromParent(HttpServletRequest request, @RequestParam("locationUuid") String locationUuid) {
 		JSONObject resultObject = new JSONObject();
 
 		ObjectNode reportsNode = JsonNodeFactory.instance.objectNode();
