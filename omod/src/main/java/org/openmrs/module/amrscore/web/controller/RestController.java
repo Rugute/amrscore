@@ -127,8 +127,8 @@ public class RestController extends BaseRestController {
 		http.setRequestMethod("GET");
 		String data = "";
 		// Set Basic Authentication header
-		String username = "erugut";
-		String password = "nNoel@2019";
+		String username = "";
+		String password = "";
 		String auth = username + ":" + password;
 		byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes());
 		String authHeaderValue = "Basic " + new String(encodedAuth);
