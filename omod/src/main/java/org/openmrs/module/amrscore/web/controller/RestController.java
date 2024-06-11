@@ -207,6 +207,42 @@ public class RestController extends BaseRestController {
 		}
 		return locationResponseObj;
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/locations")
+	@ResponseBody
+	public Object getAllLocationFromParent() {
+		JSONObject resultObject = new JSONObject();
+
+		ObjectNode reportsNode = JsonNodeFactory.instance.objectNode();
+		Location location = Context.getUserContext().getLocation();
+		ObjectMapper mapper = new ObjectMapper();
+		ArrayNode reportsArray = mapper.createArrayNode();
+
+		//HttpServletRequest request, @RequestParam("locationUuid") String locationUuid
+		try (Connection conn = getConnection()) {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM amrs_etl.reports order by category_name asc;");
+			while (resultSet.next()) {
+				ObjectNode rowNode = mapper.createObjectNode();
+				rowNode.put("id", resultSet.getString("id"));
+				rowNode.put("report_name", resultSet.getString("report_name"));
+				rowNode.put("category", resultSet.getString("category"));
+				rowNode.put("status", resultSet.getString("status"));
+				rowNode.put("category_name", resultSet.getString("category_name"));
+				// Add more columns as needed, e.g., rowNode.put("anotherColumn", resultSet.getString("anotherColumn"));
+				reportsArray.add(rowNode);
+				// Example: Get data from resultSet and add it to locationNode
+				// reportsNode.put("columnName", resultSet.getString("columnName"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("AMRS Core Errors "+ e.getMessage());
+		}
+		resultObject.put("result", reportsArray);
+
+		return resultObject.toString();
+
+	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/reports")
 	@ResponseBody
@@ -221,14 +257,14 @@ public class RestController extends BaseRestController {
 		//HttpServletRequest request, @RequestParam("locationUuid") String locationUuid
 			try (Connection conn = getConnection()) {
 				 Statement statement = conn.createStatement();
-				 ResultSet resultSet = statement.executeQuery("SELECT * FROM amrs_etl.reports order by reports_name asc;");
+				 ResultSet resultSet = statement.executeQuery("SELECT * FROM amrs_etl.reports order by category_name asc;");
 				while (resultSet.next()) {
 					ObjectNode rowNode = mapper.createObjectNode();
 					rowNode.put("id", resultSet.getString("id"));
 					rowNode.put("report_name", resultSet.getString("report_name"));
 					rowNode.put("category", resultSet.getString("category"));
 					rowNode.put("status", resultSet.getString("status"));
-					rowNode.put("status", resultSet.getString("status"));
+					rowNode.put("category_name", resultSet.getString("category_name"));
 					// Add more columns as needed, e.g., rowNode.put("anotherColumn", resultSet.getString("anotherColumn"));
 					reportsArray.add(rowNode);
 					// Example: Get data from resultSet and add it to locationNode
@@ -293,7 +329,7 @@ public class RestController extends BaseRestController {
 		try (Connection conn = getConnection()) {
 			Statement statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM amrs_etl.reports r\n" +
-					"inner join reports_logs rl on r.id=rl.report_id where locationuuid="+ locationUuid +" and report_id="+ report_id+";");
+					"inner join reports_logs rl on r.id=rl.report_id where locationuuid in ("+ locationUuid +") and report_id="+ report_id+";");
 			while (resultSet.next()) {
 				ObjectNode rowNode = mapper.createObjectNode();
 				rowNode.put("id", resultSet.getString("id"));
