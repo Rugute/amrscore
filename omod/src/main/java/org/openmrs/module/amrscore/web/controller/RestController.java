@@ -210,7 +210,7 @@ public class RestController extends BaseRestController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/locations")
 	@ResponseBody
-	public Object getAllLocationFromParent(HttpServletRequest request, @RequestParam("locationUuid") String locationUuid) {
+	public Object getAllLocationFromParent(HttpServletRequest request, @RequestParam("locationUuid") String locationUuid) throws SQLException {
 		JSONObject resultObject = new JSONObject();
 
 		ObjectNode reportsNode = JsonNodeFactory.instance.objectNode();
@@ -221,18 +221,29 @@ public class RestController extends BaseRestController {
 		//HttpServletRequest request, @RequestParam("locationUuid") String locationUuid
 		try (Connection conn = getConnection()) {
 			Statement statement = conn.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM amrs_etl.reports order by category_name asc;");
+			String parent_id ="";
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM amrs_etl.location where uuid='"+ locationUuid +"';");
 			while (resultSet.next()) {
+				 parent_id =resultSet.getString("parent_id");
+			}
+
+			if(parent_id.equals("")){
 				ObjectNode rowNode = mapper.createObjectNode();
-				rowNode.put("id", resultSet.getString("id"));
-				rowNode.put("report_name", resultSet.getString("report_name"));
-				rowNode.put("category", resultSet.getString("category"));
-				rowNode.put("status", resultSet.getString("status"));
-				rowNode.put("category_name", resultSet.getString("category_name"));
-				// Add more columns as needed, e.g., rowNode.put("anotherColumn", resultSet.getString("anotherColumn"));
+				rowNode.put("uuid", resultSet.getString("uuid"));
+				rowNode.put("location_name", resultSet.getString("location_name"));
 				reportsArray.add(rowNode);
-				// Example: Get data from resultSet and add it to locationNode
-				// reportsNode.put("columnName", resultSet.getString("columnName"));
+
+			}else {
+
+				ResultSet resultChildren = statement.executeQuery("SELECT * FROM amrs_etl.location where parent_id='" + parent_id + "';");
+
+				while (resultChildren.next()) {
+					ObjectNode rowNode = mapper.createObjectNode();
+					rowNode.put("uuid", resultSet.getString("uuid"));
+					rowNode.put("location_name", resultSet.getString("location_name"));
+					reportsArray.add(rowNode);
+
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
