@@ -1,1 +1,10 @@
-org/openmrs/module/amrscore/AdminListExtensionTest.class
+org/openmrs/module/amrscore/StandardTestData$_PersonAttributeType.class
+org/openmrs/module/amrscore/TestUtils.class
+org/openmrs/module/amrscore/StandardTestData.class
+org/openmrs/module/amrscore/StandardTestData$_Form.class
+org/openmrs/module/amrscore/StandardTestData$_Location.class
+org/openmrs/module/amrscore/StandardTestData$_PatientIdentifierType.class
+org/openmrs/module/amrscore/StandardTestData$_Program.class
+org/openmrs/module/amrscore/StandardTestData$_VisitType.class
+org/openmrs/module/amrscore/StandardTestData$_Concept.class
+org/openmrs/module/amrscore/StandardTestData$_EncounterType.class

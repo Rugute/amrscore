@@ -20,14 +20,24 @@
 	<require_version>1.11.6</require_version>
 	
 	<!-- Extensions -->
-	<extension>
+	<!-- <extension>
 		<point>org.openmrs.admin.list</point>
 		<class>org.openmrs.module.amrscore.extension.html.AdminList</class>
-	</extension>
+	</extension> -->
 
 	<require_modules>
+		<require_module version="2.13.0">org.openmrs.module.appframework</require_module>
+		<require_module version="1.2">org.openmrs.calculation</require_module>
+		<require_module version="3.9.2">org.openmrs.module.htmlformentry</require_module>
+		<require_module version="4.5.0">org.openmrs.module.idgen</require_module>
+		<require_module version="1.11.0">org.openmrs.module.metadatadeploy</require_module>
+		<require_module version="1.25.0">org.openmrs.module.reporting</require_module>
+		<require_module version="3.23.0">org.openmrs.module.uiframework</require_module>
+		<require_module version="2.0.9">org.openmrs.module.reportingcompatibility</require_module>
 		<require_module version="2.26.0">org.openmrs.module.webservices.rest</require_module>
+
 	</require_modules>
+
 
 	<aware_of_modules>
 		<aware_of_module>org.openmrs.module.legacyui</aware_of_module>

@@ -27,7 +27,7 @@
 
     <!-- Wraps AmrscoreService methods in DB transactions and OpenMRS interceptors,
     which set audit info like dateCreated, changedBy, etc.-->
-    <bean id="amrscore.AmrscoreService"
+    <!-- <bean id="amrscore.AmrscoreService"
             class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
         <property name="transactionManager">
             <ref bean="transactionManager" />
@@ -43,6 +43,22 @@
         <property name="transactionAttributeSource">
             <ref bean="transactionAttributeSource" />
         </property>
+    </bean> -->
+    <!-- Module services -->
+
+    <bean id="amrsCoreService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <bean class="org.openmrs.module.amrscore.api.impl.CoreServiceImpl"/>
+        </property>
+        <property name="preInterceptors">
+            <ref bean="serviceInterceptors" />
+        </property>
+        <property name="transactionAttributeSource">
+            <ref bean="transactionAttributeSource" />
+        </property>
     </bean>
 
     <!-- Adds AmrscoreService to OpenMRS context so it can be accessed
@@ -50,8 +66,8 @@
     <bean parent="serviceContext">
         <property name="moduleService">
             <list>
-                <value>org.openmrs.module.amrscore.api.AmrscoreService</value>
-                <ref bean="amrscore.AmrscoreService" />
+                <value>org.openmrs.module.amrscore.api.CoreService</value>
+                <ref bean="amrsCoreService" />
             </list>
         </property>
     </bean>

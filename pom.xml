@@ -1,155 +1,199 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  	
   <modelVersion>4.0.0</modelVersion>
-      
   <parent>
-            
     <groupId>org.openmrs.maven.parents</groupId>
-            
     <artifactId>maven-parent-openmrs-module</artifactId>
-            
     <version>1.1.1</version>
-        
   </parent>
-  	
   <groupId>org.openmrs.module</groupId>
-  	
   <artifactId>amrscore</artifactId>
-  	
   <version>1.0.0</version>
-  	
   <packaging>pom</packaging>
-  	
   <name>AMRS Core</name>
-  	
   <description>AMRS APIs</description>
-  	
   <url>https://wiki.openmrs.org/x/FQ4z</url>
   	
   <properties>
-    		
+    <openMRSVersion>2.6.0</openMRSVersion>
     <openmrsPlatformVersion>1.11.6</openmrsPlatformVersion>
-    		
     <java.version>1.8</java.version>
-    		
     <webservicesRestVersion>2.26.0</webservicesRestVersion>
-    		
     <legacyUIomodVersion>1.8.2</legacyUIomodVersion>
-    		
     <jsonVersion>20231013</jsonVersion>
-    	
+    <appframeworkVersion>2.13.0</appframeworkVersion>
+    <calculationVersion>1.2</calculationVersion>
+    <htmlformentryVersion>3.9.2</htmlformentryVersion>
+    <htmlwidgetsVersion>1.10.0</htmlwidgetsVersion>
+    <idgenVersion>4.5.0</idgenVersion>
+    <metadatadeployVersion>1.11.0</metadatadeployVersion>
+    <metadatasharingVersion>1.5.0</metadatasharingVersion>
+    <reportingVersion>1.25.0</reportingVersion>
+    <serializationxstreamVersion>0.2.14</serializationxstreamVersion>
+    <uiframeworkVersion>3.23.0</uiframeworkVersion>
+    <reportingcompatibilityVersion>2.0.9</reportingcompatibilityVersion>
+
   </properties>
   	
   <scm>
-    		
     <connection>scm:git:git@github.com:openmrs/openmrs-module-amrscore.git</connection>
-    		
     <developerConnection>scm:git:git@github.com:openmrs/openmrs-module-amrscore.git</developerConnection>
-    		
     <url>https://github.com/openmrs/openmrs-module-amrscore/</url>
-    	
   </scm>
   	
   <modules>
-    		
     <module>api</module>
-    		
     <module>omod</module>
-
-      
   </modules>
-  	
   <dependencyManagement>
-    		
     <dependencies>
-      			
       <dependency>
-        				
         <groupId>org.openmrs.distro</groupId>
-        				
         <artifactId>referenceapplication</artifactId>
-        				
         <version>2.4</version>
-        				
         <type>pom</type>
-        				
         <scope>import</scope>
-        			
       </dependency>
-      			
+
+      <!-- Begin OpenMRS modules -->
       <dependency>
-        				
         <groupId>org.openmrs.module</groupId>
-        				
+        <artifactId>reportingcompatibility-api</artifactId>
+        <version>${reportingcompatibilityVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>appframework-api</artifactId>
+        <version>${appframeworkVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>calculation-api</artifactId>
+        <version>${calculationVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>htmlformentry-api</artifactId>
+        <version>${htmlformentryVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>htmlwidgets-api</artifactId>
+        <version>${htmlwidgetsVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>idgen-api</artifactId>
+        <version>${idgenVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>metadatadeploy-api</artifactId>
+        <version>${metadatadeployVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>metadatasharing-api</artifactId>
+        <version>${metadatasharingVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>reporting-api</artifactId>
+        <version>${reportingVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>serialization.xstream-api</artifactId>
+        <version>${serializationxstreamVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
+        <artifactId>uiframework-api</artifactId>
+        <version>${uiframeworkVersion}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- End OpenMRS modules -->
+
+
+      <dependency>
+        <groupId>org.openmrs.module</groupId>
         <artifactId>legacyui-omod</artifactId>
-        				
         <version>${legacyUIomodVersion}</version>
-        			
       </dependency>
-      			
       <dependency>
-        				
         <groupId>org.openmrs.module</groupId>
-        				
         <artifactId>webservices.rest-omod</artifactId>
-        				
         <version>${webservicesRestVersion}</version>
-        				
         <type>jar</type>
-        				
         <scope>provided</scope>
-        			
       </dependency>
-      			
       <dependency>
-        				
         <groupId>org.openmrs.module</groupId>
-        				
         <artifactId>webservices.rest-omod-common</artifactId>
-        				
         <version>${webservicesRestVersion}</version>
-        				
         <scope>provided</scope>
-        			
       </dependency>
-      			
       <dependency>
-        				
         <groupId>org.openmrs.module</groupId>
-        				
         <artifactId>webservices.rest-omod-1.9</artifactId>
-        				
         <version>${webservicesRestVersion}</version>
-        				
         <scope>provided</scope>
-        			
       </dependency>
-      			
       <dependency>
-        				
         <groupId>org.openmrs.module</groupId>
-        				
         <artifactId>webservices.rest-omod-common</artifactId>
-        				
         <version>${webservicesRestVersion}</version>
-        				
         <classifier>tests</classifier>
-        				
         <scope>test</scope>
-        			
       </dependency>
-      			
       <dependency>
-        				
         <groupId>org.json</groupId>
-        				
         <artifactId>json</artifactId>
-        				
         <version>${jsonVersion}</version>
-        			
       </dependency>
-      		
+      <dependency>
+        <groupId>com.googlecode.json-simple</groupId>
+        <artifactId>json-simple</artifactId>
+        <version>1.1</version>
+      </dependency>
+      <!-- Begin OpenMRS core -->
+
+      <dependency>
+        <groupId>org.openmrs.api</groupId>
+        <artifactId>openmrs-api</artifactId>
+        <version>${openMRSVersion}</version>
+        <type>jar</type>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.openmrs.web</groupId>
+        <artifactId>openmrs-web</artifactId>
+        <version>${openMRSVersion}</version>
+        <type>jar</type>
+        <scope>provided</scope>
+      </dependency>
     </dependencies>
     	
   </dependencyManagement>
@@ -167,19 +211,12 @@
     </repository>
     		
     <repository>
-      			
       <id>central</id>
-      			
       <name>Maven Repository Switchboard</name>
-      			
       <layout>default</layout>
-      			
       <url>https://repo1.maven.org/maven2</url>
-      		
     </repository>
-    	
   </repositories>
-  	
   <pluginRepositories>
     		
     <pluginRepository>
